@@ -54,7 +54,7 @@ export async function onRequestGet({ env }) {
             sortType: "sys_name"
           },
           force: 1,
-          flags: 1025,
+          flags: 1029,
           from: 0,
           to: 100
         }),
