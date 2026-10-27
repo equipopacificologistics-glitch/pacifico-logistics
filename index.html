@@ -135,7 +135,7 @@ function renderMeals(){
  else if(operators.length)operatorSelect.value=operators[0];
  if(!monthInput.value)monthInput.value=mealCalendarDate();
  const operator=operatorSelect.value,month=monthInput.value;
- if(!operator||!/^\\d{4}-\\d{2}$/.test(month)){calendar.innerHTML='<div class="empty">Registra un operador en Operadores o Viajes para comenzar.</div>';document.getElementById('mealKpis').innerHTML='';document.getElementById('mealTable').innerHTML='';return}
+ if(!operator||!/^\d{4}-\d{2}$/.test(month)){calendar.innerHTML='<div class="empty">Registra un operador en Operadores o Viajes para comenzar.</div>';document.getElementById('mealKpis').innerHTML='';document.getElementById('mealTable').innerHTML='';return}
  const [year,mo]=month.split('-').map(Number),days=new Date(year,mo,0).getDate(),offset=(new Date(year,mo-1,1).getDay()+6)%7;
  const records=mealCalendarRecords().filter(r=>r.operador===operator&&r.fecha.startsWith(month));
  const sum=records.reduce((a,r)=>{a.food+=Number(!!r.comida);a.board+=Number(!!r.pension);a.total+=(r.comida?250:0)+(r.pension?200:0);a.paid+=(r.comida&&r.comidaPagada?250:0)+(r.pension&&r.pensionPagada?200:0);return a},{food:0,board:0,total:0,paid:0});
