@@ -161,7 +161,7 @@ function openMealDay(date){
    const records=mealCalendarRecords();
    const idx=records.findIndex(x=>x.operador===operator&&x.fecha===date);
    const existing=idx>=0?records[idx]:null;
-   const next={id:existing?.id||crypto.randomUUID(),operador,fecha:date,comida,pension,comidaPagada:comida&&checked('comidaPagada'),pensionPagada:pension&&checked('pensionPagada')};
+   const next={id:existing?.id||crypto.randomUUID(),operador:operator,fecha:date,comida,pension,comidaPagada:comida&&checked('comidaPagada'),pensionPagada:pension&&checked('pensionPagada')};
    if(idx>=0)records.splice(idx,1);
    if(comida||pension)records.push(next);
    await save();
