@@ -41,7 +41,6 @@ export async function onRequestGet({ env }) {
       }, 502);
     }
 
-    // No exponemos el identificador de sesión.
     const sid = data.eid;
 
     try {
@@ -92,9 +91,19 @@ export async function onRequestGet({ env }) {
         conexion: "aceptada",
         totalUnidades: result.totalItems ?? units.length,
         unidades: units.map(unit => ({
-          nombre: unit.n,
+          id: unit.id ?? null,
+          nombre: unit.n ?? null,
           tieneGPS: Boolean(unit.pos),
-          ultimaActualizacion: unit.pos?.t ?? null
+          ultimaActualizacion: unit.pos?.t ?? null,
+          latitud: unit.pos?.y != null &&
+            Number.isFinite(Number(unit.pos.y))
+              ? Number(unit.pos.y) : null,
+          longitud: unit.pos?.x != null &&
+            Number.isFinite(Number(unit.pos.x))
+              ? Number(unit.pos.x) : null,
+          velocidadKmh: unit.pos?.s != null &&
+            Number.isFinite(Number(unit.pos.s))
+              ? Number(unit.pos.s) : null
         }))
       });
     } finally {
