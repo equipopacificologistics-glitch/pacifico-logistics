@@ -54,7 +54,7 @@ export async function onRequestGet({ env }) {
             sortType: "sys_name"
           },
           force: 1,
-          flags: 1029,
+          flags: 1025,
           from: 0,
           to: 100
         }),
@@ -92,7 +92,7 @@ export async function onRequestGet({ env }) {
         totalUnidades: result.totalItems ?? units.length,
         unidades: units.map(unit => ({
           id: unit.id ?? null,
-          nombre: unit.n ?? null,
+          nombre: unit.nm ?? null,,
           tieneGPS: Boolean(unit.pos),
           ultimaActualizacion: unit.pos?.t ?? null,
           latitud: unit.pos?.y != null &&
