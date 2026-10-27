@@ -152,7 +152,23 @@ function openMealDay(date){
  const operator=document.getElementById('mealCalendarOperator').value;if(!operator)return;
  const r=mealRecord(operator,date)||{},id='mealDayForm';
  document.getElementById('modalRoot').innerHTML='<div class="modalbg"><form class="modal" id="'+id+'"><h2>'+esc(operator)+' · '+esc(date)+'</h2><p class="muted">Selecciona uno, ambos o ninguno.</p><div class="stack"><label><input type="checkbox" name="comida" '+(r.comida?'checked':'')+'> 🍽️ Comida — $250</label><label><input type="checkbox" name="comidaPagada" '+(r.comidaPagada?'checked':'')+'> Comida pagada</label><label><input type="checkbox" name="pension" '+(r.pension?'checked':'')+'> 🅿️ Pensión — $200</label><label><input type="checkbox" name="pensionPagada" '+(r.pensionPagada?'checked':'')+'> Pensión pagada</label></div><div class="modalfooter"><button type="button" class="btn secondary" onclick="closeModal()">Cancelar</button><button class="btn" type="submit">Guardar día</button></div></form></div>';
- document.getElementById(id).onsubmit=async e=>{e.preventDefault();const f=e.target,comida=f.elements.comida.checked,pension=f.elements.pension.checked;const records=mealCalendarRecords(),idx=records.findIndex(x=>x.operador===operator&&x.fecha===date);if(idx>=0)records.splice(idx,1);if(comida||pension)records.push({id:r.id||crypto.randomUUID(),operador,fecha:date,comida,pension,comidaPagada:comida&&f.elements.comidaPagada.checked,pensionPagada:pension&&f.elements.pensionPagada.checked});closeModal();renderMeals();await save()};
+ document.getElementById(id).addEventListener('submit',async function(e){
+  e.preventDefault();
+  const form=e.currentTarget;
+  const checked=name=>Boolean(form.elements.namedItem(name)?.checked);
+  const comida=checked('comida'),pension=checked('pension');
+  try{
+   const records=mealCalendarRecords();
+   const idx=records.findIndex(x=>x.operador===operator&&x.fecha===date);
+   const existing=idx>=0?records[idx]:null;
+   const next={id:existing?.id||crypto.randomUUID(),operador,fecha:date,comida,pension,comidaPagada:comida&&checked('comidaPagada'),pensionPagada:pension&&checked('pensionPagada')};
+   if(idx>=0)records.splice(idx,1);
+   if(comida||pension)records.push(next);
+   await save();
+   closeModal();
+   renderMeals();
+  }catch(err){console.error('Error al guardar comida/pensión:',err);alert('No se pudo guardar el día: '+(err?.message||err));}
+ });
 }
 window.openMealDay=openMealDay;
 
