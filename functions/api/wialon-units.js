@@ -1,3 +1,4 @@
+// Actualización de prueba para cargar las variables de Preview
 export async function onRequestGet({ env }) {
   return new Response(
     JSON.stringify({
