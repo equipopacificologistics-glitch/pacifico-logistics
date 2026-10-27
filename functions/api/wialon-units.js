@@ -92,7 +92,7 @@ export async function onRequestGet({ env }) {
         totalUnidades: result.totalItems ?? units.length,
         unidades: units.map(unit => ({
           id: unit.id ?? null,
-          nombre: unit.nm ?? null,,
+          nombre: unit.nm ?? null,
           tieneGPS: Boolean(unit.pos),
           ultimaActualizacion: unit.pos?.t ?? null,
           latitud: unit.pos?.y != null &&
