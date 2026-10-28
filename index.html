@@ -54,7 +54,7 @@
 #dashboard .eta-card button{font-size:10px;padding:5px 7px;margin-top:6px;width:100%}
 @media(max-width:1150px){#dashboard .eta-grid{grid-template-columns:1fr}}
 @media print{#dashboard .eta-grid{max-height:none;overflow:visible}#dashboard .eta-card{break-inside:avoid}}
-.eta-trip{display:flex;gap:8px;align-items:center}.eta-trip select{flex:1;min-width:0}.eta-summary{background:#f7f9fc;border:1px solid #e6ecf3;border-radius:12px;padding:14px 16px;line-height:1.9;font-size:14px}.eta-summary .row{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center}.pill.ok{background:#e3f6ea;color:#1c7a3f}.pill.warn{background:#fff4dc;color:#94600a}.pill.bad{background:#ffe7e7;color:#b32836}.btn.chip{padding:7px 12px;font-size:12px;border-radius:30px}#etaReasons.need .btn.chip{outline:2px solid #f66b16}.eta-manual{margin-top:18px;border-top:1px solid #e6ecf3;padding-top:12px}.eta-manual>summary{font-size:14px;font-weight:700;color:#185c92;cursor:pointer;margin:0}@media(max-width:560px){.eta-trip{flex-direction:column;align-items:stretch}}</style></head><body><div id="login" class="login"><div class="login-scene"><div class="login-scene-content"><div class="login-emblem"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20660%20320%22%20role%3D%22img%22%20aria-label%3D%22Transportes%20Pac%C3%ADfico%20Logistics%22%3E%3Cg%20fill%3D%22%23FF681B%22%3E%3Cpath%20d%3D%22M55%2067H340L326%2088H207L195%2080H55Z%22%2F%3E%3Cpath%20d%3D%22M83%20108H322L308%20129H211L199%20121H83Z%22%2F%3E%3Cpath%20d%3D%22M104%20149H306L293%20170H216L202%20162H104Z%22%2F%3E%3Cpath%20d%3D%22M132%20190H288L275%20211H216L204%20203H132Z%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%230A2858%22%3E%3Cpath%20d%3D%22M359%2066h88c29%200%2046%2016%2055%2044l29%2090c5%2016-4%2029-21%2029H315l45-138c5-16%2012-25%2026-25zm23%2029-32%20104h135l-28-84c-4-13-10-20-23-20z%22%2F%3E%3Cpath%20d%3D%22M331%20219h186v16H331z%22%2F%3E%3C%2Fg%3E%3Ctext%20x%3D%22330%22%20y%3D%22268%22%20font-family%3D%22Arial%2CHelvetica%2Csans-serif%22%20font-size%3D%2222%22%20font-weight%3D%22600%22%20letter-spacing%3D%2211%22%20fill%3D%22%230A2858%22%20text-anchor%3D%22middle%22%3ETRANSPORTES%3C%2Ftext%3E%3Ctext%20x%3D%22330%22%20y%3D%22308%22%20font-family%3D%22Arial%2CHelvetica%2Csans-serif%22%20font-size%3D%2235%22%20font-weight%3D%22900%22%20letter-spacing%3D%221%22%20text-anchor%3D%22middle%22%3E%3Ctspan%20fill%3D%22%230A2858%22%3EPACIFICO%3C%2Ftspan%3E%3Ctspan%20fill%3D%22%23FF681B%22%3E%20LOGISTICS%3C%2Ftspan%3E%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Transportes Pacífico Logistics"></div><div class="login-scene-title">Cada ruta, bajo control.</div><p>Operación, seguimiento y logística en un solo lugar.</p><div class="login-scene-line"><span></span><span></span><span></span></div></div><div class="login-scene-bottom">TRANSPORTES PACÍFICO LOGISTICS · PLATAFORMA OPERATIVA</div></div><div class="login-side"><form id="loginForm" class="login-card"><div class="login-eyebrow">CENTRO DE CONTROL</div><h1>Bienvenido de nuevo</h1><p class="login-intro">Accede a tu espacio de gestión logística.</p><div class="field"><label>Usuario</label><input id="user" value="admin" autocomplete="username" required></div><div class="field"><label>Contraseña</label><input id="pass" type="password" autocomplete="current-password" required></div><button class="btn wide login-submit">Iniciar sesión <span aria-hidden="true">→</span></button><p id="loginError" style="color:#b32836" role="alert"></p><div class="login-footer">ACCESO EXCLUSIVO · PERSONAL AUTORIZADO</div></form></div></div><div id="app" class="app hidden"><aside class="sidebar"><div class="sidebar-logo"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20660%20320%22%20role%3D%22img%22%20aria-label%3D%22Transportes%20Pac%C3%ADfico%20Logistics%22%3E%3Cg%20fill%3D%22%23FF681B%22%3E%3Cpath%20d%3D%22M55%2067H340L326%2088H207L195%2080H55Z%22%2F%3E%3Cpath%20d%3D%22M83%20108H322L308%20129H211L199%20121H83Z%22%2F%3E%3Cpath%20d%3D%22M104%20149H306L293%20170H216L202%20162H104Z%22%2F%3E%3Cpath%20d%3D%22M132%20190H288L275%20211H216L204%20203H132Z%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%230A2858%22%3E%3Cpath%20d%3D%22M359%2066h88c29%200%2046%2016%2055%2044l29%2090c5%2016-4%2029-21%2029H315l45-138c5-16%2012-25%2026-25zm23%2029-32%20104h135l-28-84c-4-13-10-20-23-20z%22%2F%3E%3Cpath%20d%3D%22M331%20219h186v16H331z%22%2F%3E%3C%2Fg%3E%3Ctext%20x%3D%22330%22%20y%3D%22268%22%20font-family%3D%22Arial%2CHelvetica%2Csans-serif%22%20font-size%3D%2222%22%20font-weight%3D%22600%22%20letter-spacing%3D%2211%22%20fill%3D%22%230A2858%22%20text-anchor%3D%22middle%22%3ETRANSPORTES%3C%2Ftext%3E%3Ctext%20x%3D%22330%22%20y%3D%22308%22%20font-family%3D%22Arial%2CHelvetica%2Csans-serif%22%20font-size%3D%2235%22%20font-weight%3D%22900%22%20letter-spacing%3D%221%22%20text-anchor%3D%22middle%22%3E%3Ctspan%20fill%3D%22%230A2858%22%3EPACIFICO%3C%2Ftspan%3E%3Ctspan%20fill%3D%22%23FF681B%22%3E%20LOGISTICS%3C%2Ftspan%3E%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Transportes Pacífico Logistics"></div><div class="sidebar-caption">CENTRO DE OPERACIONES</div><div id="nav"></div></aside><div class="main"><div class="top"><div><h1 id="pageTitle">Panel general</h1><div class="muted">Gestión inteligente de operaciones</div></div><div class="right"><span class="tag">DATOS COMPARTIDOS</span><span class="mini" id="clock"></span><button class="logout" id="logout">Salir</button></div></div><div class="mobile-nav" id="mobileNav"></div><div class="content"><section id="dashboard" class="section active"><div class="kpis" id="kpis"></div><div class="two"><div class="panel"><div class="toolbar"><h2>Estado de las unidades</h2><button class="btn small" onclick="showPage('unidades')">Ver todas →</button></div><div id="overview"></div><div id="dashboardMaintenance"></div></div><div class="panel eta-panel"><div class="toolbar" style="margin-bottom:6px"><h2 style="margin:0">🚚 Viajes</h2><button class="btn small" onclick="showPage('viajes')">Ver viajes →</button></div><div id="etaTripSummary" class="muted eta-summary"></div><div id="etaTripAlerts" class="eta-grid"></div></div></div><div class="alert">ℹ️ Los estados operativos se actualizan manualmente; el GPS de Wialon se consulta bajo demanda en ETA y seguimiento. Los registros se sincronizan desde la base de datos compartida.</div></section><section id="unidades" class="section"><div class="panel"><div class="toolbar"><h2>Flota y estatus operativo</h2><div class="tools"><input id="unitSearch" placeholder="Buscar unidad, operador, destino..."><select id="unitFilter"><option value="">Todos los estados</option><option>En ruta con carga</option><option>En ruta sin carga</option><option>Parada</option><option>Por cargar</option><option>Cargando</option></select><button class="btn" onclick="editRecord('unidades')">+ Nueva unidad</button></div></div><p class="muted">Al cambiar una unidad a <b>Cargando</b> se registra automáticamente la llegada a planta. Al salir de ese estado se registra el fin de carga. La duración se muestra en el panel principal.</p><div id="unitsTable"></div></div></section><section id="viajes" class="section"><div class="panel"><div class="toolbar"><h2>Control de viajes</h2><button class="btn" onclick="editRecord('viajes')">+ Nuevo viaje</button></div><div class="tools" style="margin:12px 0;display:flex;gap:10px;flex-wrap:wrap"><select id="tripStatusFilter" onchange="renderTripListing()"><option value="">Todos los viajes</option><option value="Por cargar">Por cargar</option><option value="En tránsito">En tránsito</option><option value="Cargando">Cargando</option></select></div><div id="viajesTable"></div></div></section><section id="comidas" class="section"><div class="panel">
+.eta-trip{display:flex;gap:8px;align-items:center}.eta-trip select{flex:1;min-width:0}.eta-summary{background:#f7f9fc;border:1px solid #e6ecf3;border-radius:12px;padding:14px 16px;line-height:1.9;font-size:14px}.eta-summary .row,.eta-card .row{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center}.eta-card{border:1px solid #e6ecf3;border-radius:12px;padding:12px 14px;margin-top:10px;line-height:1.8}.eta-card.late{border-left:4px solid #b32836}.eta-card.err{border-left:4px solid #94600a}.eta-batch-reason{width:100%;margin:8px 0}#etaBatchPanel[hidden]{display:none}.pill.ok{background:#e3f6ea;color:#1c7a3f}.pill.warn{background:#fff4dc;color:#94600a}.pill.bad{background:#ffe7e7;color:#b32836}.btn.chip{padding:7px 12px;font-size:12px;border-radius:30px}#etaReasons.need .btn.chip{outline:2px solid #f66b16}.eta-manual{margin-top:18px;border-top:1px solid #e6ecf3;padding-top:12px}.eta-manual>summary{font-size:14px;font-weight:700;color:#185c92;cursor:pointer;margin:0}@media(max-width:560px){.eta-trip{flex-direction:column;align-items:stretch}}</style></head><body><div id="login" class="login"><div class="login-scene"><div class="login-scene-content"><div class="login-emblem"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20660%20320%22%20role%3D%22img%22%20aria-label%3D%22Transportes%20Pac%C3%ADfico%20Logistics%22%3E%3Cg%20fill%3D%22%23FF681B%22%3E%3Cpath%20d%3D%22M55%2067H340L326%2088H207L195%2080H55Z%22%2F%3E%3Cpath%20d%3D%22M83%20108H322L308%20129H211L199%20121H83Z%22%2F%3E%3Cpath%20d%3D%22M104%20149H306L293%20170H216L202%20162H104Z%22%2F%3E%3Cpath%20d%3D%22M132%20190H288L275%20211H216L204%20203H132Z%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%230A2858%22%3E%3Cpath%20d%3D%22M359%2066h88c29%200%2046%2016%2055%2044l29%2090c5%2016-4%2029-21%2029H315l45-138c5-16%2012-25%2026-25zm23%2029-32%20104h135l-28-84c-4-13-10-20-23-20z%22%2F%3E%3Cpath%20d%3D%22M331%20219h186v16H331z%22%2F%3E%3C%2Fg%3E%3Ctext%20x%3D%22330%22%20y%3D%22268%22%20font-family%3D%22Arial%2CHelvetica%2Csans-serif%22%20font-size%3D%2222%22%20font-weight%3D%22600%22%20letter-spacing%3D%2211%22%20fill%3D%22%230A2858%22%20text-anchor%3D%22middle%22%3ETRANSPORTES%3C%2Ftext%3E%3Ctext%20x%3D%22330%22%20y%3D%22308%22%20font-family%3D%22Arial%2CHelvetica%2Csans-serif%22%20font-size%3D%2235%22%20font-weight%3D%22900%22%20letter-spacing%3D%221%22%20text-anchor%3D%22middle%22%3E%3Ctspan%20fill%3D%22%230A2858%22%3EPACIFICO%3C%2Ftspan%3E%3Ctspan%20fill%3D%22%23FF681B%22%3E%20LOGISTICS%3C%2Ftspan%3E%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Transportes Pacífico Logistics"></div><div class="login-scene-title">Cada ruta, bajo control.</div><p>Operación, seguimiento y logística en un solo lugar.</p><div class="login-scene-line"><span></span><span></span><span></span></div></div><div class="login-scene-bottom">TRANSPORTES PACÍFICO LOGISTICS · PLATAFORMA OPERATIVA</div></div><div class="login-side"><form id="loginForm" class="login-card"><div class="login-eyebrow">CENTRO DE CONTROL</div><h1>Bienvenido de nuevo</h1><p class="login-intro">Accede a tu espacio de gestión logística.</p><div class="field"><label>Usuario</label><input id="user" value="admin" autocomplete="username" required></div><div class="field"><label>Contraseña</label><input id="pass" type="password" autocomplete="current-password" required></div><button class="btn wide login-submit">Iniciar sesión <span aria-hidden="true">→</span></button><p id="loginError" style="color:#b32836" role="alert"></p><div class="login-footer">ACCESO EXCLUSIVO · PERSONAL AUTORIZADO</div></form></div></div><div id="app" class="app hidden"><aside class="sidebar"><div class="sidebar-logo"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20660%20320%22%20role%3D%22img%22%20aria-label%3D%22Transportes%20Pac%C3%ADfico%20Logistics%22%3E%3Cg%20fill%3D%22%23FF681B%22%3E%3Cpath%20d%3D%22M55%2067H340L326%2088H207L195%2080H55Z%22%2F%3E%3Cpath%20d%3D%22M83%20108H322L308%20129H211L199%20121H83Z%22%2F%3E%3Cpath%20d%3D%22M104%20149H306L293%20170H216L202%20162H104Z%22%2F%3E%3Cpath%20d%3D%22M132%20190H288L275%20211H216L204%20203H132Z%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%230A2858%22%3E%3Cpath%20d%3D%22M359%2066h88c29%200%2046%2016%2055%2044l29%2090c5%2016-4%2029-21%2029H315l45-138c5-16%2012-25%2026-25zm23%2029-32%20104h135l-28-84c-4-13-10-20-23-20z%22%2F%3E%3Cpath%20d%3D%22M331%20219h186v16H331z%22%2F%3E%3C%2Fg%3E%3Ctext%20x%3D%22330%22%20y%3D%22268%22%20font-family%3D%22Arial%2CHelvetica%2Csans-serif%22%20font-size%3D%2222%22%20font-weight%3D%22600%22%20letter-spacing%3D%2211%22%20fill%3D%22%230A2858%22%20text-anchor%3D%22middle%22%3ETRANSPORTES%3C%2Ftext%3E%3Ctext%20x%3D%22330%22%20y%3D%22308%22%20font-family%3D%22Arial%2CHelvetica%2Csans-serif%22%20font-size%3D%2235%22%20font-weight%3D%22900%22%20letter-spacing%3D%221%22%20text-anchor%3D%22middle%22%3E%3Ctspan%20fill%3D%22%230A2858%22%3EPACIFICO%3C%2Ftspan%3E%3Ctspan%20fill%3D%22%23FF681B%22%3E%20LOGISTICS%3C%2Ftspan%3E%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Transportes Pacífico Logistics"></div><div class="sidebar-caption">CENTRO DE OPERACIONES</div><div id="nav"></div></aside><div class="main"><div class="top"><div><h1 id="pageTitle">Panel general</h1><div class="muted">Gestión inteligente de operaciones</div></div><div class="right"><span class="tag">DATOS COMPARTIDOS</span><span class="mini" id="clock"></span><button class="logout" id="logout">Salir</button></div></div><div class="mobile-nav" id="mobileNav"></div><div class="content"><section id="dashboard" class="section active"><div class="kpis" id="kpis"></div><div class="two"><div class="panel"><div class="toolbar"><h2>Estado de las unidades</h2><button class="btn small" onclick="showPage('unidades')">Ver todas →</button></div><div id="overview"></div><div id="dashboardMaintenance"></div></div><div class="panel eta-panel"><div class="toolbar" style="margin-bottom:6px"><h2 style="margin:0">🚚 Viajes</h2><button class="btn small" onclick="showPage('viajes')">Ver viajes →</button></div><div id="etaTripSummary" class="muted eta-summary"></div><div id="etaTripAlerts" class="eta-grid"></div></div></div><div class="alert">ℹ️ Los estados operativos se actualizan manualmente; el GPS de Wialon se consulta bajo demanda en ETA y seguimiento. Los registros se sincronizan desde la base de datos compartida.</div></section><section id="unidades" class="section"><div class="panel"><div class="toolbar"><h2>Flota y estatus operativo</h2><div class="tools"><input id="unitSearch" placeholder="Buscar unidad, operador, destino..."><select id="unitFilter"><option value="">Todos los estados</option><option>En ruta con carga</option><option>En ruta sin carga</option><option>Parada</option><option>Por cargar</option><option>Cargando</option></select><button class="btn" onclick="editRecord('unidades')">+ Nueva unidad</button></div></div><p class="muted">Al cambiar una unidad a <b>Cargando</b> se registra automáticamente la llegada a planta. Al salir de ese estado se registra el fin de carga. La duración se muestra en el panel principal.</p><div id="unitsTable"></div></div></section><section id="viajes" class="section"><div class="panel"><div class="toolbar"><h2>Control de viajes</h2><button class="btn" onclick="editRecord('viajes')">+ Nuevo viaje</button></div><div class="tools" style="margin:12px 0;display:flex;gap:10px;flex-wrap:wrap"><select id="tripStatusFilter" onchange="renderTripListing()"><option value="">Todos los viajes</option><option value="Por cargar">Por cargar</option><option value="En tránsito">En tránsito</option><option value="Cargando">Cargando</option></select></div><div id="viajesTable"></div></div></section><section id="comidas" class="section"><div class="panel">
 <div class="toolbar"><h2>🍽️ Calendario de comidas y pensiones</h2><span class="tag">Comida $250 · Pensión $200</span></div>
 <p class="muted">Selecciona un operador y marca cada fecha manualmente. Puedes registrar comida, pensión o ambas. Los registros se conservan aunque termine el viaje y se guardan en la base compartida.</p>
 <div class="formgrid" style="margin-bottom:15px"><div class="field"><label>Operador</label><select id="mealCalendarOperator" onchange="renderMeals()"></select></div><div class="field"><label>Mes</label><input type="month" id="mealCalendarMonth" onchange="renderMeals()"></div></div>
@@ -65,7 +65,7 @@
 <section id="expedientes" class="section"><div class="panel"><div class="toolbar"><h2>Expedientes digitales</h2><button class="btn" onclick="editRecord('expedientes')">+ Nuevo documento</button></div><p class="muted">Por ahora se guardan enlaces a archivos, no se suben documentos directamente. Usa enlaces con acceso restringido.</p><div id="expedientesTable"></div></div></section>
 <section id="rentabilidad" class="section"><div class="panel"><h2>Rentabilidad por viaje</h2><p class="muted">Ingreso: cotizaciones asociadas al folio cuando se captura ese folio en la cotización; también puedes registrar el ingreso directamente en el viaje. Gastos: registros de gastos vinculados al folio. No incluye gastos sin folio ni otros costos no registrados.</p><div id="rentabilidadTable"></div></div></section>
 <section id="cobranza" class="section"><div class="panel"><div class="toolbar"><h2>Facturación y cobranza</h2><button class="btn" onclick="editRecord('cobranza')">+ Nueva factura</button></div><div id="cobranzaTable"></div></div></section>
-<section id="etaGenerator" class="section"><div class="panel" style="margin-top:15px"><div class="toolbar"><h2>ETA y seguimiento</h2><button class="btn secondary" id="etaClear">Limpiar campos</button></div><div class="field"><label for="etaViaje">Viaje</label><div class="eta-trip"><select id="etaViaje"><option value="">Selecciona un viaje</option></select><button type="button" class="btn secondary" id="etaRefresh" title="Volver a consultar el GPS y recalcular la ruta">🔄 Actualizar</button></div></div><div id="etaSummary" class="eta-summary"></div><div id="etaCalcResult" class="mini" role="status" aria-live="polite" style="margin-top:8px"></div><div class="field"><label>Razón del cambio <span id="etaReasonHint" class="mini"></span></label><div id="etaReasons" class="tools" style="margin-bottom:8px"></div><div id="etaRazonBox"></div></div><h3>Escrito generado</h3><pre id="etaPreview" style="white-space:pre-wrap;background:#f7f9fc;padding:18px;border-radius:12px;font:inherit;font-size:13px"></pre><div class="tools"><button class="btn" id="etaCopy">📋 Copiar y guardar</button><button class="btn secondary" id="etaWhatsApp">💬 Enviar por WhatsApp</button></div><div id="etaSendStatus" class="mini" role="status" aria-live="polite" style="margin-top:8px"></div><details class="eta-manual"><summary>⚙️ Ajustes manuales: campos, calculadora y Wialon</summary><div id="etaFields" class="formgrid" style="margin-top:16px"></div><div class="tools" style="margin:10px 0"><button type="button" class="btn secondary" id="etaMap">📍 Ver ruta en Google Maps</button></div><h3>🛣️ Calculadora de kilómetros y tiempo</h3><p class="muted">Pega una ubicación de Google Maps (o usa una unidad de Wialon) y elige una planta. Ruta de automóvil de OpenRouteService, sin tráfico en vivo ni restricciones de camión.</p><div class="formgrid"><div class="field full"><label>Enlace de ubicación actual de Google Maps</label><input id="etaCalcOrigin" type="text" placeholder="https://www.google.com/maps/place/24.543155,-104.059285"></div><div class="field"><label>Planta de destino guardada</label><select id="etaCalcDest"><option value="">Selecciona una planta</option></select></div><div class="field" style="display:flex;align-items:end"><button type="button" class="btn" id="etaCalcGo">🚛 Calcular kilómetros y tiempo</button></div></div><p class="note">Enlaces cortos maps.app.goo.gl: abre el enlace en Google Maps y copia la URL completa con coordenadas.</p><h3>📡 Unidad de Wialon</h3><div class="tools"><button type="button" class="btn secondary" id="wialonTestFetch">🔄 Consultar unidades Wialon</button><select id="wialonTestUnit" aria-label="Unidad de Wialon"><option value="">Primero consulta las unidades</option></select><button type="button" class="btn secondary" id="wialonTestApply">🚚 Usar unidad en ETA</button></div><div class="item" id="wialonTestStatus" style="margin-top:14px" role="status" aria-live="polite">Se consulta automáticamente al seleccionar un viaje.</div></details></div><div class="panel" style="margin-top:15px"><h2>Historial de ETA</h2><div id="etaHistory"></div></div></section>
+<section id="etaGenerator" class="section"><div class="panel" style="margin-top:15px"><div class="toolbar"><h2>ETA y seguimiento</h2><div class="tools"><button class="btn" id="etaBatchGo">🚛 ETA de todos los viajes en curso</button><button class="btn secondary" id="etaClear">Limpiar campos</button></div></div><div class="field"><label for="etaViaje">Viaje</label><div class="eta-trip"><select id="etaViaje"><option value="">Selecciona un viaje</option></select><button type="button" class="btn secondary" id="etaRefresh" title="Volver a consultar el GPS y recalcular la ruta">🔄 Actualizar</button></div></div><div id="etaSummary" class="eta-summary"></div><div id="etaCalcResult" class="mini" role="status" aria-live="polite" style="margin-top:8px"></div><div class="field"><label>Razón del cambio <span id="etaReasonHint" class="mini"></span></label><div id="etaReasons" class="tools" style="margin-bottom:8px"></div><div id="etaRazonBox"></div></div><h3>Escrito generado</h3><pre id="etaPreview" style="white-space:pre-wrap;background:#f7f9fc;padding:18px;border-radius:12px;font:inherit;font-size:13px"></pre><div class="tools"><button class="btn" id="etaCopy">📋 Copiar y guardar</button><button class="btn secondary" id="etaWhatsApp">💬 Enviar por WhatsApp</button></div><div id="etaSendStatus" class="mini" role="status" aria-live="polite" style="margin-top:8px"></div><details class="eta-manual"><summary>⚙️ Ajustes manuales: campos, calculadora y Wialon</summary><div id="etaFields" class="formgrid" style="margin-top:16px"></div><div class="tools" style="margin:10px 0"><button type="button" class="btn secondary" id="etaMap">📍 Ver ruta en Google Maps</button></div><h3>🛣️ Calculadora de kilómetros y tiempo</h3><p class="muted">Pega una ubicación de Google Maps (o usa una unidad de Wialon) y elige una planta. Ruta de automóvil de OpenRouteService, sin tráfico en vivo ni restricciones de camión.</p><div class="formgrid"><div class="field full"><label>Enlace de ubicación actual de Google Maps</label><input id="etaCalcOrigin" type="text" placeholder="https://www.google.com/maps/place/24.543155,-104.059285"></div><div class="field"><label>Planta de destino guardada</label><select id="etaCalcDest"><option value="">Selecciona una planta</option></select></div><div class="field" style="display:flex;align-items:end"><button type="button" class="btn" id="etaCalcGo">🚛 Calcular kilómetros y tiempo</button></div></div><p class="note">Enlaces cortos maps.app.goo.gl: abre el enlace en Google Maps y copia la URL completa con coordenadas.</p><h3>📡 Unidad de Wialon</h3><div class="tools"><button type="button" class="btn secondary" id="wialonTestFetch">🔄 Consultar unidades Wialon</button><select id="wialonTestUnit" aria-label="Unidad de Wialon"><option value="">Primero consulta las unidades</option></select><button type="button" class="btn secondary" id="wialonTestApply">🚚 Usar unidad en ETA</button></div><div class="item" id="wialonTestStatus" style="margin-top:14px" role="status" aria-live="polite">Se consulta automáticamente al seleccionar un viaje.</div></details></div><div class="panel" id="etaBatchPanel" hidden style="margin-top:15px"><h2>🚛 Viajes en curso</h2><div id="etaBatch"></div></div><datalist id="etaReasonList"></datalist><div class="panel" style="margin-top:15px"><h2>Historial de ETA</h2><div id="etaHistory"></div></div></section>
 <section id="rutas" class="section"><div class="panel"><div class="toolbar"><h2>🛣️ Historial de rutas y costos</h2><button class="btn secondary" id="routeNew">+ Nueva ruta</button></div><p class="muted">Selecciona plantas del directorio, consulta los kilómetros en Google Maps y registra directamente el gasto de gasolina, casetas y TAG. Los costos son estimados y se guardan para futuras cotizaciones; Google Maps no proporciona aquí costos automáticos de peaje.</p><div class="formgrid" id="routeFields">
 <div class="field"><label>📍 Planta de origen</label><select id="routeOrigin"></select></div><div class="field"><label>🏁 Planta de destino</label><select id="routeDestination"></select></div>
 <div class="field"><label>🚚 Tipo de unidad</label><select id="routeVehicle"><option>1.5 t</option><option>3.5 t</option><option>Rabón</option><option>Torton</option><option>Otra</option></select></div>
@@ -191,7 +191,7 @@ let wialonGpsFix=null; // {point,time}: último punto GPS aplicado desde Wialon
 let etaRouteInfo=null; // {time}: duración de la última ruta calculada
 let etaAutoRun=0; // invalida autollenados en curso al cambiar de viaje o limpiar
 let etaRazonAuto=false; // «Sin cambio» puesto automáticamente (se retira si el viaje va tarde)
-let etaLastSaved=''; // evita guardar dos veces el mismo escrito en el historial
+const etaSavedTexts=new Set(); // evita guardar dos veces el mismo escrito en el historial
 const etaReasonChips=['Tráfico','Descanso del operador','Retraso en carga','Retraso en descarga','Clima','Revisión / retén','Falla mecánica'];
 function etaValues(){return Object.fromEntries(etaSpec.map(([key])=>[key,document.getElementById('eta_'+key)?.value||'']))}
 function etaText(v){const fields=[['pta','📋 PTA o REFERENCIA'],['unidad','🚚 Unidad'],['origen','📍 Origen'],['destino','🏁 Destino'],['etaOriginal','🕒 ETA original'],['etaActual','🔄 ETA actualizado'],['razon','⚠️ Razón del cambio'],['ubicacion','📡 Ubicación actual'],['ultima','📅 Última actualización'],['km','🛣️ Km restantes para llegar a destino'],['aviso','📦 Aviso de embarque']];return '🚛 *PACÍFICO LOGISTICS | ACTUALIZACIÓN DE ETA*\n\n'+fields.map(([key,label])=>label+': '+(v[key]||'—')).join('\n')}
@@ -232,16 +232,21 @@ function etaSyncReason(v){
  const hint=document.getElementById('etaReasonHint');
  if(hint)hint.textContent=missing?'· ⚠️ El viaje va tarde: elige o escribe la razón':'';
 }
+function etaGpsPill(time){
+ if(!time)return '';
+ const age=Math.max(0,(Date.now()-time)/60000);
+ return '<span class="pill '+(age<=30?'ok':age<=120?'warn':'bad')+'">📡 GPS hace '+etaDuration(age)+'</span>';
+}
+function etaDelayPill(delay){
+ if(delay==null)return '';
+ return delay>ETA_LATE_TOLERANCE?'<span class="pill bad">🔴 '+etaDuration(delay)+' tarde</span>':'<span class="pill ok">🟢 A tiempo'+(delay<-ETA_LATE_TOLERANCE?' ('+etaDuration(delay)+' antes)':'')+'</span>';
+}
 function renderEtaSummary(v){
  const box=document.getElementById('etaSummary');if(!box)return;
  if(!v.pta&&!v.unidad){box.innerHTML='<span class="muted">Selecciona un viaje: se consulta el GPS de su unidad en Wialon y se calculan la ubicación, los kilómetros y el ETA hacia su planta de destino.</span>';return}
- let gps='';
- if(wialonGpsFix&&document.getElementById('etaCalcOrigin')?.value.trim()===wialonGpsFix.point){
-  const age=Math.max(0,(Date.now()-wialonGpsFix.time)/60000);
-  gps='<span class="pill '+(age<=30?'ok':age<=120?'warn':'bad')+'">📡 GPS hace '+etaDuration(age)+'</span>';
- }
- const delay=etaDelayMinutes(v);
- const status=delay==null?'':delay>ETA_LATE_TOLERANCE?'<span class="pill bad">🔴 '+etaDuration(delay)+' tarde</span>':'<span class="pill ok">🟢 A tiempo'+(delay<-ETA_LATE_TOLERANCE?' ('+etaDuration(delay)+' antes)':'')+'</span>';
+ const fromGps=wialonGpsFix&&document.getElementById('etaCalcOrigin')?.value.trim()===wialonGpsFix.point;
+ const gps=fromGps?etaGpsPill(wialonGpsFix.time):'';
+ const status=etaDelayPill(etaDelayMinutes(v));
  box.innerHTML=
   '<div class="row"><b>🚚 Unidad '+esc(v.unidad||'—')+'</b>'+gps+'</div>'+
   '<div class="row">📍 '+esc(v.ubicacion||'Ubicación pendiente')+'</div>'+
@@ -249,12 +254,11 @@ function renderEtaSummary(v){
   '<div class="row">🕒 <b>ETA '+esc(v.etaActual||'—')+'</b><span class="mini">(original '+esc(v.etaOriginal||'—')+')</span>'+status+'</div>';
 }
 function refreshEtaPreview(){const v=etaValues();etaSyncReason(v);renderEtaSummary(v);const p=document.getElementById('etaPreview');if(p)p.textContent=etaText(v)}
-async function etaSaveHistory(text){
- const values=etaValues();
+async function etaSaveHistory(text,values=etaValues()){
  if(!values.pta&&!values.unidad)return 'Captura la PTA o la unidad para guardarlo en el historial.';
- if(text===etaLastSaved)return 'Ya estaba guardado en el historial.';
+ if(etaSavedTexts.has(text))return 'Ya estaba guardado en el historial.';
  db.etas.unshift({id:crypto.randomUUID(),...values,guardado:new Date().toISOString()});
- await save();renderExtras();etaLastSaved=text;
+ await save();renderExtras();etaSavedTexts.add(text);
  return '✓ Guardado en el historial.';
 }
 function initEta(){if(etaReady)return;etaReady=true;
@@ -262,6 +266,7 @@ function initEta(){if(etaReady)return;etaReady=true;
 const etaFieldHtml=([key,label])=>'<div class="field '+(['razon','aviso'].includes(key)?'full':'')+'">'+(key==='razon'?'':'<label>'+esc(label)+'</label>')+( ['razon','aviso'].includes(key)?'<textarea id="eta_'+key+'" placeholder="Escribe libremente"></textarea>':'<input id="eta_'+key+'" placeholder="'+esc(label)+'">')+'</div>';
 document.getElementById('etaFields').innerHTML=etaSpec.filter(([key])=>key!=='razon').map(etaFieldHtml).join('');
 document.getElementById('etaRazonBox').innerHTML=etaFieldHtml(etaSpec.find(([key])=>key==='razon'));
+document.getElementById('etaReasonList').innerHTML=['Sin cambio',...etaReasonChips].map(r=>'<option value="'+esc(r)+'">').join('');
 document.getElementById('etaReasons').innerHTML=etaReasonChips.map(r=>'<button type="button" class="btn secondary chip">'+esc(r)+'</button>').join('');
 document.querySelectorAll('#etaReasons .chip').forEach(chip=>chip.onclick=()=>{
  const el=document.getElementById('eta_razon'),r=chip.textContent,cur=el.value.trim();
@@ -315,6 +320,30 @@ function etaCalcRefreshPlants(){
  sel.innerHTML='<option value="">'+(db.ubicaciones.length?'Selecciona una planta':'No hay plantas guardadas')+'</option>'+db.ubicaciones.map(p=>'<option value="'+esc(p.id)+'">'+esc(p.nombre||'Sin nombre')+' · '+esc(p.ciudad||'')+'</option>').join('');
  if(db.ubicaciones.some(p=>p.id===prev))sel.value=prev;
 }
+// Utilidades compartidas por el ETA individual y el de todos los viajes en curso.
+function etaTripActive(v){return !['Entregado','Cancelado'].includes(v.estado)}
+function etaPlantForTrip(trip){
+ return db.ubicaciones.find(p=>p.id===trip.destinoPlantaId)||
+  db.ubicaciones.find(p=>String(p.nombre||'').trim().toUpperCase()===String(trip.destino||'').trim().toUpperCase())||null;
+}
+function etaRouteText(seconds){const mins=Math.round(seconds/60);return Math.floor(mins/60)+' h '+String(mins%60).padStart(2,'0')+' min'}
+async function etaFetchRoute(origin,destination){
+ const r=await fetch('/api/eta-route',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({origin,destination})});
+ const data=await r.json().catch(()=>({}));
+ if(!r.ok)throw Error(data.error||'No se pudo calcular la ruta ('+r.status+').');
+ const meters=Number(data.distanceMeters),seconds=Number(data.durationSeconds);
+ if(!Number.isFinite(meters)||!Number.isFinite(seconds)||meters<0||seconds<0)throw Error('La ruta no devolvió distancia y duración válidas.');
+ return {meters,seconds};
+}
+// Dirección aproximada de unas coordenadas, o null si el servicio no la identifica.
+async function etaFetchAddress(origin){
+ try{
+  const gr=await fetch('/api/eta-location',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({origin})});
+  const geo=await gr.json().catch(()=>({}));
+  if(gr.ok&&typeof geo.location==='string'&&geo.location.trim())return geo.location.trim();
+ }catch(e){console.warn('Geocodificación no disponible:',e)}
+ return null;
+}
 async function etaCalculateRoute(){
  const origin=etaCoordinates(document.getElementById('etaCalcOrigin').value);
  const plant=db.ubicaciones.find(p=>p.id===document.getElementById('etaCalcDest').value);
@@ -325,32 +354,19 @@ async function etaCalculateRoute(){
  if(!destination){target.textContent='La planta no tiene coordenadas legibles en su enlace. Edita la planta y pega la URL completa de Google Maps (no un enlace corto).';return}
  button.disabled=true;target.textContent='Calculando ruta por carretera…';
  try{
-  const r=await fetch('/api/eta-route',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({origin,destination})});
-  const data=await r.json().catch(()=>({}));
-  if(!r.ok)throw Error(data.error||'No se pudo calcular la ruta ('+r.status+').');
-  if(!Number.isFinite(Number(data.distanceMeters))||!Number.isFinite(Number(data.durationSeconds))||Number(data.distanceMeters)<0||Number(data.durationSeconds)<0)throw Error('La ruta no devolvió distancia y duración válidas.');
-  const km=(data.distanceMeters/1000).toLocaleString('es-MX',{maximumFractionDigits:1});
-  const mins=Math.round(data.durationSeconds/60);
-  const time=Math.floor(mins/60)+' h '+String(mins%60).padStart(2,'0')+' min';
-  etaRouteInfo={time};
+  const data=await etaFetchRoute(origin,destination);
+  const km=(data.meters/1000).toLocaleString('es-MX',{maximumFractionDigits:1});
+  etaRouteInfo={time:etaRouteText(data.seconds)};
   target.textContent='Ruta calculada ('+km+' km). Consultando dirección…';
-  document.getElementById('eta_km').value=(data.distanceMeters/1000).toFixed(1);
-  const arrival=new Date(Date.now()+Number(data.durationSeconds)*1000);
+  document.getElementById('eta_km').value=(data.meters/1000).toFixed(1);
   const etaActual=document.getElementById('eta_etaActual');
-  if(etaActual)etaActual.value=arrival.toLocaleString('es-MX',{dateStyle:'short',timeStyle:'short'});
+  if(etaActual)etaActual.value=etaDateTime(Date.now()+data.seconds*1000);
   const destField=document.getElementById('eta_destino');if(destField)destField.value=plant.nombre||destField.value;
   const locationField=document.getElementById('eta_ubicacion');
   const fallback=origin.lat.toFixed(6)+', '+origin.lon.toFixed(6);
-  let location=fallback;
-  let locationNote='Coordenadas exactas del enlace; no se pudo identificar una dirección.';
-  try{
-    const gr=await fetch('/api/eta-location',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({origin})});
-    const geo=await gr.json().catch(()=>({}));
-    if(gr.ok&&typeof geo.location==='string'&&geo.location.trim()){
-      location=geo.location.trim();
-      locationNote='Dirección aproximada según los datos cartográficos; coordenadas del enlace: '+fallback+'.';
-    }
-  }catch(e){console.warn('Geocodificación no disponible:',e)}
+  const address=await etaFetchAddress(origin);
+  const location=address||fallback;
+  const locationNote=address?'Dirección aproximada según los datos cartográficos; coordenadas del enlace: '+fallback+'.':'Coordenadas exactas del enlace; no se pudo identificar una dirección.';
   if(locationField)locationField.value=location;
   // Si el origen sigue siendo el punto GPS de Wialon, la hora es la del último reporte GPS, no la del cálculo.
   const fromGps=wialonGpsFix&&document.getElementById('etaCalcOrigin').value.trim()===wialonGpsFix.point;
@@ -383,6 +399,10 @@ const wialonTestStatus=document.getElementById('wialonTestStatus');
 const wialonTestSelect=document.getElementById('wialonTestUnit');
 // Número de unidad a partir del nombre en Wialon («UNIDAD 17» → «17»).
 function wialonUnitNumber(unit){return String(unit?.nombre??'').trim().replace(/^UNIDAD\s*/i,'').trim()}
+function wialonCoords(unit){
+ const c=unit.latitud!=null&&unit.longitud!=null?{lat:Number(unit.latitud),lon:Number(unit.longitud)}:unit.lat!=null&&unit.lon!=null?{lat:Number(unit.lat),lon:Number(unit.lon)}:null;
+ return c&&Number.isFinite(c.lat)&&Number.isFinite(c.lon)&&Math.abs(c.lat)<=90&&Math.abs(c.lon)<=180?c:null;
+}
 function sameUnitNumber(a,b){
  const x=String(a??'').trim().toUpperCase(),y=String(b??'').trim().toUpperCase();
  if(!x||!y)return false;
@@ -420,8 +440,8 @@ function wialonApplyUnit(){
  const field=document.getElementById('eta_unidad');if(field)field.value=number;
  const timestamp=Number(unit.ultimaActualizacion);
  const last=Number.isFinite(timestamp)&&timestamp>0?new Date(timestamp*1000).toLocaleString('es-MX'):'sin fecha';
- const coords=unit.latitud!=null&&unit.longitud!=null?{lat:Number(unit.latitud),lon:Number(unit.longitud)}:unit.lat!=null&&unit.lon!=null?{lat:Number(unit.lat),lon:Number(unit.lon)}:null;
- if(coords&&Number.isFinite(coords.lat)&&Number.isFinite(coords.lon)&&Math.abs(coords.lat)<=90&&Math.abs(coords.lon)<=180){
+ const coords=wialonCoords(unit);
+ if(coords){
   const point=coords.lat+','+coords.lon;
   document.getElementById('etaCalcOrigin').value=point;
   wialonGpsFix=timestamp>0?{point,time:new Date(timestamp*1000)}:null;
@@ -443,8 +463,7 @@ async function etaAutofillFromTrip(trip){
  const run=++etaAutoRun;
  const target=document.getElementById('etaCalcResult');
  const destSel=document.getElementById('etaCalcDest');
- const plant=db.ubicaciones.find(p=>p.id===trip.destinoPlantaId)||
-  db.ubicaciones.find(p=>String(p.nombre||'').trim().toUpperCase()===String(trip.destino||'').trim().toUpperCase());
+ const plant=etaPlantForTrip(trip);
  destSel.value=plant?plant.id:'';
  if(!trip.unidad){target.textContent='⚠️ El viaje no tiene unidad asignada; selecciona una unidad de Wialon manualmente.';return}
  target.textContent='Buscando la unidad '+trip.unidad+' en Wialon…';
@@ -458,6 +477,115 @@ async function etaAutofillFromTrip(trip){
 }
 document.getElementById('etaCalcDest').addEventListener('change',()=>{
  if(document.getElementById('etaCalcDest').value&&etaCoordinates(document.getElementById('etaCalcOrigin').value))etaCalculateRoute();
+});
+
+// ETA de todos los viajes en curso: una consulta a Wialon y una ruta por viaje.
+let etaBatchItems=[];
+async function etaBatchOne(trip,units){
+ const values={pta:trip.pta||trip.folio,unidad:trip.unidad,origen:trip.origen,destino:trip.destino,
+  etaOriginal:trip.etaOriginal||etaDateTime(trip.entrega)||db.unidades.find(u=>String(u.numero)===String(trip.unidad))?.eta||'',
+  etaActual:'',razon:'',ubicacion:'',ultima:'',km:'',aviso:trip.aviso||''};
+ const item={trip,values,error:'',delay:null,gpsTime:null,time:''};
+ const fail=msg=>{item.error=msg;return item};
+ if(!trip.unidad)return fail('El viaje no tiene unidad asignada.');
+ const unit=units.find(u=>sameUnitNumber(wialonUnitNumber(u),trip.unidad));
+ if(!unit)return fail('La unidad '+trip.unidad+' no aparece en Wialon.');
+ const origin=wialonCoords(unit);
+ if(!origin)return fail('Wialon no devolvió coordenadas para la unidad '+trip.unidad+'.');
+ const plant=etaPlantForTrip(trip);
+ if(!plant)return fail('El destino «'+(trip.destino||'—')+'» no coincide con ninguna planta guardada.');
+ const destination=etaCoordinates(plant.enlace);
+ if(!destination)return fail('La planta «'+(plant.nombre||'—')+'» no tiene coordenadas en su enlace.');
+ const ts=Number(unit.ultimaActualizacion);
+ item.gpsTime=ts>0?new Date(ts*1000):null;
+ let route;
+ try{route=await etaFetchRoute(origin,destination)}catch(e){return fail(e.message)}
+ const address=await etaFetchAddress(origin);
+ Object.assign(values,{destino:plant.nombre||trip.destino,etaActual:etaDateTime(Date.now()+route.seconds*1000),
+  ubicacion:address||origin.lat.toFixed(6)+', '+origin.lon.toFixed(6),ultima:etaClock(item.gpsTime||new Date()),km:(route.meters/1000).toFixed(1)});
+ item.time=etaRouteText(route.seconds);
+ item.delay=etaDelayMinutes(values);
+ if(item.delay!=null&&item.delay<=ETA_LATE_TOLERANCE)values.razon='Sin cambio';
+ return item;
+}
+async function etaBatchRun(){
+ const btn=document.getElementById('etaBatchGo'),box=document.getElementById('etaBatch');
+ const trips=db.viajes.filter(etaTripActive);
+ document.getElementById('etaBatchPanel').hidden=false;
+ if(!trips.length){box.innerHTML='<div class="empty">No hay viajes en curso.</div>';return}
+ btn.disabled=true;box.textContent='Consultando Wialon…';
+ try{
+  if(!await wialonLoadUnits()){box.textContent='⚠️ No se pudo consultar Wialon. Revisa la conexión e inténtalo de nuevo.';return}
+  const units=wialonTestUnits.slice(),items=new Array(trips.length);
+  let next=0,done=0;
+  box.textContent='Calculando 0 de '+trips.length+' viajes…';
+  // Hasta 3 rutas a la vez para no saturar OpenRouteService.
+  await Promise.all(Array.from({length:Math.min(3,trips.length)},async()=>{
+   while(next<trips.length){const i=next++;items[i]=await etaBatchOne(trips[i],units);box.textContent='Calculando '+(++done)+' de '+trips.length+' viajes…'}
+  }));
+  let changed=false;
+  for(const it of items){
+   if(it.error)continue;
+   const u=db.unidades.find(u=>String(u.numero).trim()===String(it.trip.unidad).trim());
+   if(u){u.ubicacion=it.values.ubicacion;u.actualizado=(it.gpsTime||new Date()).toISOString();changed=true}
+  }
+  if(changed){await save();render()}
+  // Primero los que van tarde, luego los que tienen error, al final los que van a tiempo.
+  const rank=it=>it.error?1:it.delay!=null&&it.delay>ETA_LATE_TOLERANCE?0:2;
+  etaBatchItems=items.sort((a,b)=>rank(a)-rank(b));
+  renderEtaBatch();
+ }catch(e){box.textContent='⚠️ '+e.message}
+ finally{btn.disabled=false}
+}
+function renderEtaBatch(){
+ const items=etaBatchItems,box=document.getElementById('etaBatch');
+ const late=items.filter(it=>!it.error&&it.delay!=null&&it.delay>ETA_LATE_TOLERANCE).length,errors=items.filter(it=>it.error).length;
+ box.innerHTML='<div class="toolbar" style="margin-bottom:0"><span class="mini">'+items.length+' viajes · '+late+' tarde · '+errors+' con error · '+new Date().toLocaleTimeString('es-MX',{hour:'numeric',minute:'2-digit'})+'</span>'+
+  '<div class="tools"><button type="button" class="btn secondary" data-act="all">📋 Copiar todos y guardar</button></div></div><div class="mini" data-status></div>'+
+  items.map((it,i)=>{
+   const v=it.values,isLate=!it.error&&it.delay!=null&&it.delay>ETA_LATE_TOLERANCE;
+   return '<div class="eta-card'+(it.error?' err':isLate?' late':'')+'" data-i="'+i+'">'+
+    '<div class="row"><b>'+esc(v.pta||'—')+'</b><span class="mini">U'+esc(v.unidad||'—')+' · '+esc(v.origen||'')+' → '+esc(v.destino||'')+'</span>'+etaGpsPill(it.gpsTime)+etaDelayPill(it.delay)+'</div>'+
+    (it.error?'<div class="mini">⚠️ '+esc(it.error)+'</div><div class="tools" style="margin-top:8px"><button type="button" class="btn secondary" data-act="open">✏️ Abrir y completar</button></div>':
+    '<div class="row mini">📍 '+esc(v.ubicacion)+' · 🛣️ '+esc(v.km)+' km · ⏱️ '+esc(it.time)+' · 🕒 ETA '+esc(v.etaActual)+' (original '+esc(v.etaOriginal||'—')+')</div>'+
+    '<input class="eta-batch-reason" list="etaReasonList" placeholder="'+(isLate?'⚠️ Razón del retraso':'Razón del cambio')+'" value="'+esc(v.razon)+'">'+
+    '<div class="tools"><button type="button" class="btn" data-act="copy">📋 Copiar y guardar</button><button type="button" class="btn secondary" data-act="wa">💬 WhatsApp</button><button type="button" class="btn secondary" data-act="open">✏️ Abrir</button></div>')+
+    '<div class="mini" data-status style="margin-top:6px"></div></div>';
+  }).join('');
+}
+document.getElementById('etaBatchGo').addEventListener('click',etaBatchRun);
+document.getElementById('etaBatch').addEventListener('input',e=>{
+ const card=e.target.closest('.eta-card');
+ if(card&&e.target.classList.contains('eta-batch-reason'))etaBatchItems[card.dataset.i].values.razon=e.target.value;
+});
+document.getElementById('etaBatch').addEventListener('click',async e=>{
+ const btn=e.target.closest('button[data-act]');if(!btn)return;
+ const act=btn.dataset.act,card=btn.closest('.eta-card');
+ const status=msg=>{(card||document.getElementById('etaBatch')).querySelector('[data-status]').textContent=msg};
+ if(act==='all'){
+  const ready=etaBatchItems.filter(it=>!it.error);
+  if(!ready.length)return status('No hay escritos listos para copiar.');
+  const texts=ready.map(it=>etaText(it.values));
+  let copied='✓ '+texts.length+' escritos copiados.';
+  try{await navigator.clipboard.writeText(texts.join('\n\n'))}catch{prompt('Copia este texto:',texts.join('\n\n'));copied=''}
+  try{let saved=0;for(const it of ready){const t=etaText(it.values);if(!etaSavedTexts.has(t)){await etaSaveHistory(t,it.values);saved++}}status((copied+' '+saved+' guardados en el historial.').trim())}
+  catch(err){status(copied+' ⚠️ No se pudo guardar en el historial: '+err.message)}
+  return;
+ }
+ const it=etaBatchItems[card.dataset.i];
+ if(act==='open'){
+  const sel=document.getElementById('etaViaje');sel.value=it.trip.id;sel.dispatchEvent(new Event('change'));
+  sel.scrollIntoView({behavior:'smooth',block:'center'});return;
+ }
+ const t=etaText(it.values);
+ if(act==='wa'){
+  window.open('https://wa.me/?text='+encodeURIComponent(t),'_blank','noopener,noreferrer');
+  try{status('💬 Elige el chat en WhatsApp. '+await etaSaveHistory(t,it.values))}catch(err){status('⚠️ No se pudo guardar en el historial: '+err.message)}
+  return;
+ }
+ let copied='✓ Escrito copiado.';
+ try{await navigator.clipboard.writeText(t)}catch{prompt('Copia este texto:',t);copied=''}
+ try{status((copied+' '+await etaSaveHistory(t,it.values)).trim())}catch(err){status(copied+' ⚠️ No se pudo guardar en el historial: '+err.message)}
 });
 
 function maintenanceStatus(m){
@@ -494,7 +622,7 @@ document.getElementById('rentabilidadTable').innerHTML=table('viajes',rows,['fol
 renderMaintenanceAlerts();
 const sel=document.getElementById('etaViaje'),prev=sel.value;
 // Viajes en curso primero; entregados y cancelados aparte.
-const tripActive=v=>!['Entregado','Cancelado'].includes(v.estado);
+const tripActive=etaTripActive;
 const tripOption=v=>'<option value="'+esc(v.id)+'">'+esc(v.folio||v.id)+(v.unidad?' · U'+esc(v.unidad):'')+' · '+esc(v.origen||'')+' → '+esc(v.destino||'')+'</option>';
 const tripsActive=db.viajes.filter(tripActive),tripsDone=db.viajes.filter(v=>!tripActive(v));
 sel.innerHTML='<option value="">Selecciona un viaje</option>'+(tripsActive.length?'<optgroup label="En curso ('+tripsActive.length+')">'+tripsActive.map(tripOption).join('')+'</optgroup>':'')+(tripsDone.length?'<optgroup label="Entregados / cancelados">'+tripsDone.map(tripOption).join('')+'</optgroup>':'');
