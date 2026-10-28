@@ -193,12 +193,18 @@ function etaClock(value=new Date()){
  const d=value instanceof Date?value:new Date(value);
  return Number.isFinite(d.getTime())?d.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit',hour12:true}).toLowerCase():'';
 }
+// Mismo formato que «ETA actualizado» (p. ej. 27/10/26, 9:12 p.m.).
+function etaDateTime(value){
+ if(!value)return '';
+ const d=new Date(value);
+ return Number.isFinite(d.getTime())?d.toLocaleString('es-MX',{dateStyle:'short',timeStyle:'short'}):'';
+}
 function refreshEtaPreview(){const p=document.getElementById('etaPreview');if(p)p.textContent=etaText(etaValues())}
 function initEta(){if(etaReady)return;etaReady=true;
 document.getElementById('etaFields').innerHTML=etaSpec.map(([key,label])=>'<div class="field '+(['razon','aviso'].includes(key)?'full':'')+'"><label>'+esc(label)+'</label>'+( ['razon','aviso'].includes(key)?'<textarea id="eta_'+key+'" placeholder="Escribe libremente"></textarea>':'<input id="eta_'+key+'" placeholder="'+esc(label)+'">')+'</div>').join('');
 document.querySelectorAll('#etaFields input,#etaFields textarea').forEach(el=>el.addEventListener('input',refreshEtaPreview));
 document.getElementById('etaClear').onclick=()=>{document.querySelectorAll('#etaFields input,#etaFields textarea').forEach(el=>el.value='');document.getElementById('etaViaje').value='';refreshEtaPreview()};
-document.getElementById('etaViaje').onchange=e=>{const v=db.viajes.find(v=>v.id===e.target.value);if(!v)return;const unit=db.unidades.find(u=>String(u.numero)===String(v.unidad));const data={pta:v.pta||v.folio,unidad:v.unidad,origen:v.origen,destino:v.destino,etaOriginal:v.etaOriginal||unit?.eta||'',etaActual:v.etaActual||'',aviso:v.aviso||'',ubicacion:unit?.ubicacion||'',ultima:unit?.actualizado?etaClock(unit.actualizado):''};for(const [k,val] of Object.entries(data)){const el=document.getElementById('eta_'+k);if(el)el.value=val||''}refreshEtaPreview();etaAutofillFromTrip(v)};
+document.getElementById('etaViaje').onchange=e=>{const v=db.viajes.find(v=>v.id===e.target.value);if(!v)return;const unit=db.unidades.find(u=>String(u.numero)===String(v.unidad));const data={pta:v.pta||v.folio,unidad:v.unidad,origen:v.origen,destino:v.destino,etaOriginal:v.etaOriginal||etaDateTime(v.entrega)||unit?.eta||'',etaActual:v.etaActual||'',aviso:v.aviso||'',ubicacion:unit?.ubicacion||'',ultima:unit?.actualizado?etaClock(unit.actualizado):''};for(const [k,val] of Object.entries(data)){const el=document.getElementById('eta_'+k);if(el)el.value=val||''}refreshEtaPreview();etaAutofillFromTrip(v)};
 document.getElementById('etaMap').onclick=()=>{const v=etaValues();if(!v.destino)return alert('Primero escribe el destino.');if(!v.ubicacion)return alert('Primero escribe la ubicación actual de Wialon.');const url='https://www.google.com/maps/dir/?api=1&origin='+encodeURIComponent(v.ubicacion)+'&destination='+encodeURIComponent(v.destino)+'&travelmode=driving';window.open(url,'_blank','noopener,noreferrer');};
 document.getElementById('etaUpdateLocation').onclick=async()=>{const v=etaValues();if(!v.unidad||!v.ubicacion)return alert('Primero captura la unidad y su ubicación actual.');const unit=db.unidades.find(u=>String(u.numero).trim()===String(v.unidad).trim());if(!unit)return alert('Esa unidad no existe en Unidades. Revisa el número.');if(!confirm('¿Actualizar la ubicación de la unidad '+v.unidad+' en el módulo Unidades?'))return;unit.ubicacion=v.ubicacion;unit.actualizado=new Date().toISOString();document.getElementById('eta_ultima').value=etaClock();await save();render();refreshEtaPreview();alert('Ubicación registrada en Unidades.');};
 document.getElementById('etaCopy').onclick=async()=>{const t=etaText(etaValues());try{await navigator.clipboard.writeText(t);alert('ETA copiado. Pégalo en WhatsApp o correo.')}catch{prompt('Copia este texto:',t)}};
@@ -258,14 +264,17 @@ async function etaCalculateRoute(){
     }
   }catch(e){console.warn('Geocodificación no disponible:',e)}
   if(locationField)locationField.value=location;
+  // Si el origen sigue siendo el punto GPS de Wialon, la hora es la del último reporte GPS, no la del cálculo.
+  const fromGps=wialonGpsFix&&document.getElementById('etaCalcOrigin').value.trim()===wialonGpsFix.point;
+  const reportedAt=fromGps?wialonGpsFix.time:new Date();
   const updated=document.getElementById('eta_ultima');
-  if(updated)updated.value=etaClock();
+  if(updated)updated.value=etaClock(reportedAt);
   const unitNumber=(document.getElementById('eta_unidad')?.value||'').trim();
   const matchingUnit=unitNumber?db.unidades.find(u=>String(u.numero).trim()===unitNumber):null;
   let unitMessage='';
   if(matchingUnit){
     matchingUnit.ubicacion=location;
-    matchingUnit.actualizado=new Date().toISOString();
+    matchingUnit.actualizado=reportedAt.toISOString();
     await save();
     render();
     unitMessage=' ✓ Ubicación guardada también en Unidades ('+esc(unitNumber)+').';
@@ -281,6 +290,7 @@ document.getElementById('etaCalcGo').addEventListener('click',etaCalculateRoute)
 
 // Prueba Wialon: no altera Supabase hasta que el usuario guarde su ETA.
 let wialonTestUnits=[];
+let wialonGpsFix=null; // {point,time}: último punto GPS aplicado desde Wialon
 const wialonTestStatus=document.getElementById('wialonTestStatus');
 const wialonTestSelect=document.getElementById('wialonTestUnit');
 // Número de unidad a partir del nombre en Wialon («UNIDAD 17» → «17»).
@@ -326,6 +336,7 @@ function wialonApplyUnit(){
  if(coords&&Number.isFinite(coords.lat)&&Number.isFinite(coords.lon)&&Math.abs(coords.lat)<=90&&Math.abs(coords.lon)<=180){
   const point=coords.lat+','+coords.lon;
   document.getElementById('etaCalcOrigin').value=point;
+  wialonGpsFix=timestamp>0?{point,time:new Date(timestamp*1000)}:null;
   document.getElementById('eta_ubicacion').value=point;
   const gpsTime=document.getElementById('eta_ultima');if(gpsTime&&timestamp>0)gpsTime.value=etaClock(new Date(timestamp*1000));
   const age=timestamp>0?Date.now()-timestamp*1000:Infinity;
