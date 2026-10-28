@@ -423,6 +423,20 @@ function etaCalcRefreshPlants(){
  sel.innerHTML='<option value="">'+(db.ubicaciones.length?'Selecciona una planta':'No hay plantas guardadas')+'</option>'+db.ubicaciones.map(p=>'<option value="'+esc(p.id)+'">'+esc(p.nombre||'Sin nombre')+' · '+esc(p.ciudad||'')+'</option>').join('');
  if(db.ubicaciones.some(p=>p.id===prev))sel.value=prev;
 }
+// Llamadas a /api/*: envían la sesión (las funciones la exigen). Si caducó, se renueva una sola vez
+// aunque haya varias llamadas en paralelo, y se reintenta.
+let apiRefreshing=null;
+async function apiFetch(url,options={}){
+ const call=()=>fetch(url,{...options,headers:{...(options.headers||{}),...(accessToken?{'Authorization':'Bearer '+accessToken}:{})}});
+ let r=await call();
+ if(r.status===401&&refreshToken){
+  try{
+   if(!apiRefreshing)apiRefreshing=refreshSession().finally(()=>{apiRefreshing=null});
+   await apiRefreshing;r=await call();
+  }catch(e){console.warn('No se pudo renovar la sesión:',e)}
+ }
+ return r;
+}
 // Utilidades compartidas por el ETA individual y el de todos los viajes en curso.
 function etaTripActive(v){return !['Entregado','Cancelado'].includes(v.estado)}
 function etaPlantForTrip(trip){
@@ -431,7 +445,7 @@ function etaPlantForTrip(trip){
 }
 function etaRouteText(seconds){const mins=Math.round(seconds/60);return Math.floor(mins/60)+' h '+String(mins%60).padStart(2,'0')+' min'}
 async function etaFetchRoute(origin,destination){
- const r=await fetch('/api/eta-route',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({origin,destination})});
+ const r=await apiFetch('/api/eta-route',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({origin,destination})});
  const data=await r.json().catch(()=>({}));
  if(!r.ok)throw Error(data.error||'No se pudo calcular la ruta ('+r.status+').');
  const meters=Number(data.distanceMeters),seconds=Number(data.durationSeconds);
@@ -441,7 +455,7 @@ async function etaFetchRoute(origin,destination){
 // Dirección aproximada de unas coordenadas, o null si el servicio no la identifica.
 async function etaFetchAddress(origin){
  try{
-  const gr=await fetch('/api/eta-location',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({origin})});
+  const gr=await apiFetch('/api/eta-location',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({origin})});
   const geo=await gr.json().catch(()=>({}));
   if(gr.ok&&typeof geo.location==='string'&&geo.location.trim())return geo.location.trim();
  }catch(e){console.warn('Geocodificación no disponible:',e)}
@@ -514,7 +528,7 @@ function sameUnitNumber(a,b){
 async function wialonLoadUnits(){
  const btn=document.getElementById('wialonTestFetch');btn.disabled=true;wialonTestStatus.textContent='Consultando Wialon…';
  try{
-  const response=await fetch('/api/wialon-units',{cache:'no-store'});
+  const response=await apiFetch('/api/wialon-units',{cache:'no-store'});
   const result=await response.json();
   if(!response.ok||!result.ok)throw Error(result.mensaje||result.error||'No se pudo consultar Wialon');
   const units=Array.isArray(result.unidades)?result.unidades:[];
