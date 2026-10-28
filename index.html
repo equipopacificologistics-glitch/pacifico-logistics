@@ -480,7 +480,7 @@ document.getElementById('etaCalcDest').addEventListener('change',()=>{
 });
 
 // ETA de todos los viajes en curso: una consulta a Wialon y una ruta por viaje.
-let etaBatchItems=[];
+let etaBatchItems=[],etaBatchTime=null;
 async function etaBatchOne(trip,units){
  const values={pta:trip.pta||trip.folio,unidad:trip.unidad,origen:trip.origen,destino:trip.destino,
   etaOriginal:trip.etaOriginal||etaDateTime(trip.entrega)||db.unidades.find(u=>String(u.numero)===String(trip.unidad))?.eta||'',
@@ -532,7 +532,7 @@ async function etaBatchRun(){
   if(changed){await save();render()}
   // Primero los que van tarde, luego los que tienen error, al final los que van a tiempo.
   const rank=it=>it.error?1:it.delay!=null&&it.delay>ETA_LATE_TOLERANCE?0:2;
-  etaBatchItems=items.sort((a,b)=>rank(a)-rank(b));
+  etaBatchItems=items.sort((a,b)=>rank(a)-rank(b));etaBatchTime=new Date();
   renderEtaBatch();
  }catch(e){box.textContent='⚠️ '+e.message}
  finally{btn.disabled=false}
@@ -540,16 +540,16 @@ async function etaBatchRun(){
 function renderEtaBatch(){
  const items=etaBatchItems,box=document.getElementById('etaBatch');
  const late=items.filter(it=>!it.error&&it.delay!=null&&it.delay>ETA_LATE_TOLERANCE).length,errors=items.filter(it=>it.error).length;
- box.innerHTML='<div class="toolbar" style="margin-bottom:0"><span class="mini">'+items.length+' viajes · '+late+' tarde · '+errors+' con error · '+new Date().toLocaleTimeString('es-MX',{hour:'numeric',minute:'2-digit'})+'</span>'+
+ box.innerHTML='<div class="toolbar" style="margin-bottom:0"><span class="mini">'+items.length+' viajes · '+late+' tarde · '+errors+' con error · '+(etaBatchTime||new Date()).toLocaleTimeString('es-MX',{hour:'numeric',minute:'2-digit'})+'</span>'+
   '<div class="tools"><button type="button" class="btn secondary" data-act="all">📋 Copiar todos y guardar</button></div></div><div class="mini" data-status></div>'+
   items.map((it,i)=>{
    const v=it.values,isLate=!it.error&&it.delay!=null&&it.delay>ETA_LATE_TOLERANCE;
    return '<div class="eta-card'+(it.error?' err':isLate?' late':'')+'" data-i="'+i+'">'+
     '<div class="row"><b>'+esc(v.pta||'—')+'</b><span class="mini">U'+esc(v.unidad||'—')+' · '+esc(v.origen||'')+' → '+esc(v.destino||'')+'</span>'+etaGpsPill(it.gpsTime)+etaDelayPill(it.delay)+'</div>'+
-    (it.error?'<div class="mini">⚠️ '+esc(it.error)+'</div><div class="tools" style="margin-top:8px"><button type="button" class="btn secondary" data-act="open">✏️ Abrir y completar</button></div>':
+    (it.error?'<div class="mini">⚠️ '+esc(it.error)+'</div><div class="tools" style="margin-top:8px"><button type="button" class="btn secondary" data-act="open">✏️ Abrir y completar</button><button type="button" class="btn danger" data-act="delete">🗑️ Eliminar viaje</button></div>':
     '<div class="row mini">📍 '+esc(v.ubicacion)+' · 🛣️ '+esc(v.km)+' km · ⏱️ '+esc(it.time)+' · 🕒 ETA '+esc(v.etaActual)+' (original '+esc(v.etaOriginal||'—')+')</div>'+
     '<input class="eta-batch-reason" list="etaReasonList" placeholder="'+(isLate?'⚠️ Razón del retraso':'Razón del cambio')+'" value="'+esc(v.razon)+'">'+
-    '<div class="tools"><button type="button" class="btn" data-act="copy">📋 Copiar y guardar</button><button type="button" class="btn secondary" data-act="wa">💬 WhatsApp</button><button type="button" class="btn secondary" data-act="open">✏️ Abrir</button></div>')+
+    '<div class="tools"><button type="button" class="btn" data-act="copy">📋 Copiar y guardar</button><button type="button" class="btn secondary" data-act="wa">💬 WhatsApp</button><button type="button" class="btn secondary" data-act="open">✏️ Abrir</button><button type="button" class="btn danger" data-act="delete">🗑️ Eliminar viaje</button></div>')+
     '<div class="mini" data-status style="margin-top:6px"></div></div>';
   }).join('');
 }
@@ -573,6 +573,19 @@ document.getElementById('etaBatch').addEventListener('click',async e=>{
   return;
  }
  const it=etaBatchItems[card.dataset.i];
+ if(act==='delete'){
+  const t=it.trip;
+  if(!confirm('¿Eliminar el viaje '+(t.folio||t.pta||'')+' (unidad '+(t.unidad||'—')+', '+(t.origen||'')+' → '+(t.destino||'')+')?\n\nSe borra de Viajes para todo el equipo y no se puede deshacer.'))return;
+  btn.disabled=true;
+  const before=db.viajes;
+  db.viajes=db.viajes.filter(v=>v.id!==t.id);
+  try{await save()}catch(err){db.viajes=before;btn.disabled=false;return status('⚠️ No se pudo eliminar el viaje: '+err.message)}
+  render();
+  etaBatchItems=etaBatchItems.filter(x=>x!==it);
+  renderEtaBatch();
+  document.getElementById('etaBatch').querySelector('[data-status]').textContent='🗑️ Viaje '+(t.folio||t.pta||'')+' eliminado.';
+  return;
+ }
  if(act==='open'){
   const sel=document.getElementById('etaViaje');sel.value=it.trip.id;sel.dispatchEvent(new Event('change'));
   sel.scrollIntoView({behavior:'smooth',block:'center'});return;
