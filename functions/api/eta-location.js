@@ -15,7 +15,7 @@ export async function onRequestPost({request,env}) {
      !Number.isFinite(p.lat)||!Number.isFinite(p.lon)||
      Math.abs(p.lat)>90||Math.abs(p.lon)>180)
     return json({error:'Coordenadas inválidas'},400);
-  const url=new URL('https://api.openrouteservice.org/geocode/reverse');
+  const url=new URL('https://api.heigit.org/pelias/v1/reverse');
   url.searchParams.set('point.lat',String(p.lat));
   url.searchParams.set('point.lon',String(p.lon));
   url.searchParams.set('size','1');
