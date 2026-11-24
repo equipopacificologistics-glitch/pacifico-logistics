@@ -46,7 +46,7 @@ export async function onRequestPost({ request, env }) {
 
   try {
     const resp = await fetch(
-      "https://api.openrouteservice.org/v2/directions/driving-car/json",
+      "https://api.heigit.org/openrouteservice/v2/directions/driving-car/json",
       {
         method: "POST",
         headers: {
